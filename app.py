@@ -14,7 +14,7 @@ from sklearn.ensemble import RandomForestClassifier
 import pickle
 
 # Load pre-trained model and vectorizer
-with open("random_forest_model.pkl", "rb") as model_file:
+with open("random_forest_model_compressed.pkl", "rb") as model_file:
     random_forest = pickle.load(model_file)
 with open("count_vectorizer.pkl", "rb") as vectorizer_file:
     vectorizer_cvec = pickle.load(vectorizer_file)
