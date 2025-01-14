@@ -12,10 +12,12 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 import pickle
+import joblib
 
 # Load pre-trained model and vectorizer
 with open("random_forest_model_compressed.pkl", "rb") as model_file:
-    random_forest = pickle.load(model_file)
+    random_forest = joblib.load("random_forest_model_compressed.pkl")
+    # random_forest = pickle.load(model_file)
 with open("count_vectorizer.pkl", "rb") as vectorizer_file:
     vectorizer_cvec = pickle.load(vectorizer_file)
 
