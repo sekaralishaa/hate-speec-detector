@@ -3,7 +3,8 @@
 
 # In[ ]:
 
-
+import nltk
+nltk.download('stopwords')
 import streamlit as st
 import re
 from nltk.tokenize import word_tokenize
