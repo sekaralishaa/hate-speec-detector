@@ -17,6 +17,29 @@ from sklearn.ensemble import RandomForestClassifier
 import pickle
 import joblib
 
+# Custom CSS
+st.markdown(
+    """
+    <style>
+    .title {
+        color: #000080;  /* Navy */
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+    .answer-box {
+        background-color: #000080;  /* Navy */
+        color: white;
+        font-size: 1.2em;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
 # Load pre-trained model and vectorizer
 with open("random_forest_model_compressed.pkl", "rb") as model_file:
     random_forest = joblib.load("random_forest_model_compressed.pkl")
@@ -41,7 +64,7 @@ def cleansing(text):
     return ' '.join(tokenized_text)
 
 # Streamlit app
-st.title("Hate Speech and Offensive Language Detection")
+st.markdown('<div class="title">Hate Speech and Offensive Language Detection</div>', unsafe_allow_html=True)
 
 # Input text box
 user_input = st.text_area("Enter a sentence to classify:")
@@ -52,7 +75,11 @@ if st.button("Predict"):
         vectorized_text = vectorizer_cvec.transform([clean_text])
         prediction = random_forest.predict(vectorized_text)[0]
         class_map = {0: "Hate Speech", 1: "Offensive Language", 2: "Neutral"}
-        st.write(f"The text is classified as: **{class_map[prediction]}**")
+        
+        # Display prediction in a styled box
+        st.markdown(
+            f'<div class="answer-box">The text is classified as: <strong>{class_map[prediction]}</strong></div>',
+            unsafe_allow_html=True,
+        )
     else:
         st.warning("Please enter a sentence.")
-
