@@ -5,6 +5,7 @@
 
 import nltk
 nltk.download('stopwords')
+nltk.download('punkt_tab')
 import streamlit as st
 import re
 from nltk.tokenize import word_tokenize
