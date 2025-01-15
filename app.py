@@ -85,23 +85,23 @@ def cleansing(text):
     tokenized_text = [lemmatizer.lemmatize(word) for word in tokenized_text]
     return ' '.join(tokenized_text)
 
-# Streamlit app
-st.markdown('<div class="title">Hate Speech and Offensive Language Detection</div>', unsafe_allow_html=True)
+# # Streamlit app
+# st.markdown('<div class="title">Hate Speech and Offensive Language Detection</div>', unsafe_allow_html=True)
 
-# Input text box
-user_input = st.text_area("Enter a sentence to classify:")
+# # Input text box
+# user_input = st.text_area("Enter a sentence to classify:")
 
-if st.button("Predict"):
-    if user_input:
-        clean_text = cleansing(user_input)
-        vectorized_text = vectorizer_cvec.transform([clean_text])
-        prediction = random_forest.predict(vectorized_text)[0]
-        class_map = {0: "Hate Speech", 1: "Offensive Language", 2: "Neutral"}
+# if st.button("Predict"):
+#     if user_input:
+#         clean_text = cleansing(user_input)
+#         vectorized_text = vectorizer_cvec.transform([clean_text])
+#         prediction = random_forest.predict(vectorized_text)[0]
+#         class_map = {0: "Hate Speech", 1: "Offensive Language", 2: "Neutral"}
         
-        # Display prediction in a styled box
-        st.markdown(
-            f'<div class="answer-box">The text is classified as: <strong>{class_map[prediction]}</strong></div>',
-            unsafe_allow_html=True,
-        )
-    else:
-        st.warning("Please enter a sentence.")
+#         # Display prediction in a styled box
+#         st.markdown(
+#             f'<div class="answer-box">The text is classified as: <strong>{class_map[prediction]}</strong></div>',
+#             unsafe_allow_html=True,
+#         )
+#     else:
+#         st.warning("Please enter a sentence.")
